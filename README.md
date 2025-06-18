@@ -56,6 +56,9 @@ python app.py
 Выберите календарь из списка
 Просматривайте задачи, добавляйте, редактируйте и отмечайте как выполненные
 
+Для отслеживания этих же напоминаний на iOS необходимо настроить на устройстве учетную запись календаря, указывающую на тот же сервер CalDAV.
+To track the same reminders on iOS, you need to configure a calendar account on the iOS device pointing to the same CalDAV server.
+
 # Маршруты:
 ```
 / — страница входа
