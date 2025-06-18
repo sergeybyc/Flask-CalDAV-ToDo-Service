@@ -1,8 +1,9 @@
 # Flask CalDAV ToDo Service
 ___
 
-Простой веб-сервис для работы с задачами (ToDo) в CalDAV календаре через Flask.
-Протестирована синхронизация с CalDAV Radicale с подключенным к нему Apple Напоминания iOS
+Простой веб-сервис для работы с задачами (ToDo) через CalDAV-календарь на базе Flask. Проверена синхронизация с CalDAV-сервером Radicale и приложением Apple Напоминания на iOS.
+
+A simple web service for managing tasks (ToDo) via a CalDAV calendar built with Flask. Synchronization tested with the Radicale CalDAV server and Apple Reminders on iOS.
 
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/7b767ab4-de27-4e22-b5a9-b180a3eb46f6" />
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/a786ef4f-4b21-4230-93d0-432687b4dcc3" />
