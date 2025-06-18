@@ -1,0 +1,293 @@
+:root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --tile-background: #1e1e1e;
+    --tile-hover: #2a2a2a;
+    --badge-background: #333333;
+    --btn-background: #2c2c2e;
+    --btn-hover: #3a3a3c;
+    --input-background: #2c2c2e;
+    --input-border: #3a3a3c;
+    --danger-color: #ff453a;
+    --success-color: #32d74b;
+    --secondary-color: #636366;
+}
+
+body.light {
+    --background-color: #f5f5f5;
+    --text-color: #000000;
+    --tile-background: #ffffff;
+    --tile-hover: #e0e0e0;
+    --badge-background: #cccccc;
+    --btn-background: #e0e0e0;
+    --btn-hover: #c7c7c7;
+    --input-background: #ffffff;
+    --input-border: #999999;
+    --danger-color: #ff453a;
+    --success-color: #32d74b;
+    --secondary-color: #636366;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.grid, .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card-tile, .calendar-tile {
+    background-color: var(--tile-background);
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    height: 140px;
+    color: var(--text-color);
+    position: relative;
+}
+
+.card-tile:hover, .calendar-tile:hover {
+    background-color: var(--tile-hover);
+    transform: translateY(-2px);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.emoji {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.task-count {
+    font-size: 14px;
+    color: #8e8e93;
+    background-color: var(--badge-background);
+    padding: 4px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    transition: background-color 0.3s;
+}
+
+.calendar-name {
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: auto;
+    padding-top: 1rem;
+    text-align: left;
+    color: var(--text-color);
+}
+
+/* Кнопки */
+
+.btn, .button, .calendar-btn, .task-btn {
+    background-color: var(--btn-background);
+    color: var(--text-color);
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    user-select: none;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover, .button:hover, .calendar-btn:hover, .task-btn:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-1px);
+}
+
+.btn:active, .button:active, .calendar-btn:active, .task-btn:active {
+    transform: translateY(1px);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #ff5e57;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: #000;
+}
+
+.btn-success:hover {
+    background-color: #3ddc52;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: #7c7c80;
+}
+
+/* Задачи */
+
+.task-item {
+    background-color: var(--tile-background);
+    padding:  2rem 1rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: var(--tile-hover);
+}
+
+.task-actions a {
+    margin-left: 0.5rem;
+    background-color: var(--btn-background);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.task-actions a:hover {
+    background-color: var(--btn-hover);
+}
+
+/* Поля ввода */
+
+input[type="text"], input[type="password"], textarea {
+    background-color: var(--input-background);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #0a84ff;
+}
+
+/* Контейнер */
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Анимация появления плиток */
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.calendar-tile {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeIn 0.4s forwards;
+}
+
+/* Задачи и чекбоксы */
+
+.task-item.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 10px !important;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.task-checkbox-form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.task-checkbox-form input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    border: 1px solid var(--input-border);
+    border-radius: 0.25rem;
+    background-color: var(--input-background);
+    appearance: auto;
+}
+
+.task-summary {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: default;
+    user-select: text;
+    font-weight: normal;
+    font-family: inherit;
+}
+
+.task-summary:hover,
+.task-summary:focus {
+    text-decoration: none;
+}
+
+.task-actions a {
+    margin-left: 1rem;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать задачу</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="container mt-5">
+    <h2 class="d-flex justify-content-between align-items-center">
+    Редактировать задачу
+    <button id="toggle-theme" class="btn btn-outline-light ms-3">🌙</button>
+</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Название задачи</label>
+            <input type="text" name="summary" class="form-control" value="{{ summary }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ url_for('view_calendar', calendar_url=calendar_url) }}" class="btn btn-secondary ms-2">Отмена</a>
+    </form>
+</body>
+<script>
+    const toggleButton = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    // Функция для применения темы из localStorage
+    function applyTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light');
+            toggleButton.textContent = '☀️';
+        } else {
+            body.classList.remove('light');
+            toggleButton.textContent = '🌙';
+        }
+    }
+
+    // При загрузке страницы применяем сохранённую тему
+    applyTheme();
+
+    // При клике меняем тему и сохраняем выбор
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('light');
+        if (body.classList.contains('light')) {
+            toggleButton.textContent = '☀️';
+            localStorage.setItem('theme', 'light');
+        } else {
+            toggleButton.textContent = '🌙';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Напоминания</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="container mt-5">
+    <h2 class="d-flex justify-content-between align-items-center">
+    {{ calendar_name }}
+    <button id="toggle-theme" class="btn btn-outline-light ms-3">🌙</button>
+</h2>
+
+    
+    <a href="{{ url_for('add_task', calendar_url=calendar_url) }}" class="btn btn-success mb-3">Добавить</a>
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="task-item list-group-item">
+                <div class="task-content">
+                    <form method="POST" action="{{ url_for('delete_task') }}" class="task-checkbox-form">
+    <input type="hidden" name="task_url" value="{{ task.href }}">
+    <input type="hidden" name="calendar_url" value="{{ calendar_url }}">
+    <input type="checkbox" name="completed" onchange="this.form.submit()" title="Отметить выполненным" aria-label="Выполнить задачу">
+</form>
+
+                    <a href="{{ url_for('edit_task', task_url=task.href, calendar_url=calendar_url) }}" class="task-summary">
+                        {{ task.summary }}
+                    </a>
+                </div>
+                <div class="task-actions">
+                    <a href="{{ url_for('edit_task', task_url=task.href, calendar_url=calendar_url) }}">Редактировать</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Назад</a>
+</body>
+<script>
+    const toggleButton = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    // Функция для применения темы из localStorage
+    function applyTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light');
+            toggleButton.textContent = '☀️';
+        } else {
+            body.classList.remove('light');
+            toggleButton.textContent = '🌙';
+        }
+    }
+
+    // При загрузке страницы применяем сохранённую тему
+    applyTheme();
+
+    // При клике меняем тему и сохраняем выбор
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('light');
+        if (body.classList.contains('light')) {
+            toggleButton.textContent = '☀️';
+            localStorage.setItem('theme', 'light');
+        } else {
+            toggleButton.textContent = '🌙';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+
+</html>
